@@ -1,21 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const myGroupController = require("../controllers/mygroupController");
-router.get("/", (req, res) => {
-  myGroupController.getMyGroup(req, res);
-});
-router.post("/MSSV", (req, res) => {
-  myGroupController.addMember(req, res);
-});
+const {
+  getMyGroup,
+  addMember,
+  findById,
+  message,
+  messageAll,
+} = require("../controllers/mygroupController");
 
-router.get("/MSSV/:id", (req, res) => {
-  myGroupController.findById(req, res);
-});
-
-router.get("/message/:id", (req, res) => {
-  myGroupController.message(req, res);
-});
-router.get("/message", (req, res) => {
-  myGroupController.messageAll(req, res);
-});
+router.get("/", getMyGroup);
+router.post("/MSSV", addMember);
+router.get("/MSSV/:id", findById);
+router.get("/message/:id", message);
+router.get("/message", messageAll);
 module.exports = router;
