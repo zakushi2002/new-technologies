@@ -1,6 +1,6 @@
 const e = require("express");
 const myGroup = require("../models/mygroup");
-const error = { error: "No valid" };
+const error = { error: "Not valid" };
 const apiMessage = { message: "Success" };
 
 const getMyGroup = (req, res) => {
