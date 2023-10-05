@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="mb-1">{{article.title}}</h1>
+  <div class="text-muted mb-2">
+    {{article.createdDate}}
+  </div>
+  <div class="card-subtitle text-muted mb-2">
+    Author:
+    {{article.author}}
+  </div>
+  <div>
+    {{article.content}}
+  </div>
+  <div>
+    {{#each article.comments}}
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-subtitle text-muted mb-2">
+            Author:
+            {{this.author}}
+          </div>
+          <div class="card-text mb-2">{{this.content}}</div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <br />
+  <a href="/" class="btn btn-secondary">All Articles</a>
+  <a href="/articles/update/{{article.id}}" class="btn btn-info">Edit</a>
+
+</div>

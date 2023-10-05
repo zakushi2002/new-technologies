@@ -1,8 +1,8 @@
 const postList = require("../models/post");
-const commentList = require("../models/comment");
 
 const main = (req, res) => {
-  res.render("home", { postList: postList, commentList: commentList });
+  const list = postList;
+  res.render("listArticle", { postList: list });
 };
 
 module.exports = { main };

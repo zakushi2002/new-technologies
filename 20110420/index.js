@@ -44,8 +44,8 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url} ${time}`);
   next();
 });
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.get("/", mainRouter);
 app.use("/articles", articleRouter);
 app.use("/v1/post", postRouter);

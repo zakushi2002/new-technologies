@@ -1,6 +1,14 @@
 <div class="container">
-  <h1 class="mb-4">New Article</h1>
-  <form action="/articles/new" method="POST">
+  <h1 class="mb-4">Update Article</h1>
+  <div class="text-muted mb-2">
+    {{article.createdDate}}
+  </div>
+  <div class="card-subtitle text-muted mb-2">
+    Author:
+    {{article.author}}
+  </div>
+  <form action="/articles/update" method="POST">
+    <input type="hidden" name="id" value="{{article.id}}" />
     <div class="form-group">
       <label for="title">Title</label>
       <input
@@ -15,28 +23,14 @@
     </div>
 
     <div class="form-group">
-      <label for="author">Author</label>
-      <input
-        type="text"
-        class="form-control"
-        id="author"
-        name="author"
-        placeholder="Enter author"
-        value="{{article.author}}"
-        required
-      />
-    </div>
-
-    <div class="form-group">
       <label for="content">Content</label>
       <textarea
         class="form-control"
         id="content"
         name="content"
         placeholder="Enter content"
-        values="{{article.content}}"
         required
-      ></textarea>
+      >{{article.content}}</textarea>
     </div>
     <a href="/" class="btn btn-secondary">Cancel</a>
     <button type="submit" class="btn btn-primary">Save</button>
