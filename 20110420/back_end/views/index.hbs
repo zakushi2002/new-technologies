@@ -1,0 +1,101 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <style>
+    /* Thiết lập cho container chính */ .container { display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */ align-items:
+    center; /* Canh giữa theo chiều dọc */ min-height: 100vh; /* Độ cao tối
+    thiểu là chiều cao của viewport */ } /* Định dạng layout chính */ .layout {
+    width: 800px; /* Độ rộng là 800px */ padding: 20px; /* Thêm padding để tạo
+    khoảng cách xung quanh layout */ background-color: #fff; /* Màu nền */
+    border: 1px solid #ccc; /* Viền */ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Đổ bóng */ } /* Định dạng các bài post */ .post { background-color: #fff;
+    border: 1px solid #ccc; border-radius: 5px; margin: 20px 0; /* Khoảng cách
+    giữa các bài post */ padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0,
+    0.1); /* Đổ bóng */ } /* Định dạng phần author và content của bài post */
+    .post p { margin: 0; /* Loại bỏ margin để căn chỉnh chính xác */ } /* Đặt
+    màu nền cho phần author và content riêng biệt */ .post .author {
+    background-color: #f3f3f3; padding: 5px; font-weight: bold; } .post .content
+    { background-color: #fcfcfc; padding: 10px; } /* Định dạng biểu mẫu tạo bài
+    post */ #postform { background-color: #fff; border: 1px solid #ccc;
+    border-radius: 5px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    } /* Định dạng nhãn và trường nhập liệu */ label { display: block;
+    font-weight: bold; margin-bottom: 5px; } input[type="text"], textarea {
+    width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;
+    border-radius: 5px; font-size: 14px; } /* Định dạng nút "Create Post" */
+    .createbtn[type="submit"] { background-color: #007bff; color: #fff; border:
+    none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor:
+    pointer; transition: background-color 0.3s ease; }
+    .createbtn[type="submit"]:hover { background-color: #0056b3; } /* Định dạng
+    nút "View Details" */ /* Định dạng container cho các nút */
+    .button-container { display: flex; justify-content: space-between;
+    align-items: center; } /* Định dạng nút "View Details" */ .view-button
+    {color: #fff; border: none; padding: 10px 20px; border-radius: 5px;
+    font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;
+    background-color: #007bff; color: #fff; } .view-button:hover {
+    background-color: #0056b3; } /* Định dạng nút "Edit Post" */ .edit-button
+    {color: #fff; border: none; padding: 10px 20px; border-radius: 5px;
+    font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;
+    background-color: #ffc107; /* Màu vàng */ color: #333; } .edit-button:hover
+    { background-color: #e0a800; /* Màu vàng nhạt khi hover */ } /* Định dạng
+    nút "Delete Post" */ .delete-button { background-color: #dc3545;color: #fff;
+    border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;
+    cursor: pointer; transition: background-color 0.3s ease; /* Màu đỏ */ color:
+    #fff; } .delete-button:hover { background-color: #c82333; /* Màu đỏ nhạt khi
+    hover */ }
+  </style>
+  <body>
+    <div class="container">
+      <div class="layout">
+        <h1>Welcome to our Blog</h1>
+
+        <!-- Biểu mẫu tạo bài post -->
+        <form id="postform" method="POST" action="/addPost">
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required /><br />
+
+          <label for="content">Content:</label>
+          <textarea id="content" name="content" required></textarea><br />
+
+          <button class="createbtn" type="submit">Create Post</button>
+        </form>
+
+        {{#each posts}}
+          <div class="post">
+            <div class="author">
+              <p>{{this.author}}</p>
+            </div>
+            <div class="content">
+              <p>{{this.content}}</p>
+            </div>
+
+            <div class="button-container">
+
+              <form id="viewbtn" method="GET" action="/detail/{{this.id}}">
+                <button type="submit" class="view-button">View detail</button>
+              </form>
+
+              <form id="editbtn" method="GET" action="/edit/{{this.id}}">
+                <button type="submit" class="edit-button">Edit Post</button>
+              </form>
+              <form id="delbtn" method="POST" action="/delete/{{this.id}}">
+                <button
+                  class="delete-button"
+                  type="submit"
+                  onclick="return confirm('Are you sure you want to delete this post?')"
+                >Delete Post</button>
+              </form>
+
+            </div>
+
+          </div>
+        {{/each}}
+
+      </div>
+    </div>
+
+  </body>
+</html>

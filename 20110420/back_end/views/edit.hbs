@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <style>
+    /* Thiết lập cho container chính */ .container { display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */ align-items:
+    center; /* Canh giữa theo chiều dọc */ min-height: 100vh; /* Độ cao tối
+    thiểu là chiều cao của viewport */ } /* Định dạng layout chính */ .layout {
+    width: 800px; /* Độ rộng là 800px */ padding: 20px; /* Thêm padding để tạo
+    khoảng cách xung quanh layout */ background-color: #fff; /* Màu nền */
+    border: 1px solid #ccc; /* Viền */ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Đổ bóng */ } /* Định dạng các bài post */ .post { background-color: #fff;
+    border: 1px solid #ccc; border-radius: 5px; margin: 20px 0; /* Khoảng cách
+    giữa các bài post */ padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0,
+    0.1); /* Đổ bóng */ } /* Định dạng phần author và content của bài post */
+    .post p { margin: 0; /* Loại bỏ margin để căn chỉnh chính xác */ } /* Đặt
+    màu nền cho phần author và content riêng biệt */ .post .author {
+    background-color: #f3f3f3; padding: 5px; font-weight: bold; } .post .content
+    { background-color: #fcfcfc; padding: 10px; } /* Định dạng biểu mẫu tạo bài
+    post */ form { background-color: #fff; border: 1px solid #ccc;
+    border-radius: 5px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    } /* Định dạng nhãn và trường nhập liệu */ label { display: block;
+    font-weight: bold; margin-bottom: 5px; } input[type="text"], textarea {
+    width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;
+    border-radius: 5px; font-size: 14px; } /* Định dạng nút "Create Post" */
+    button[type="submit"] { background-color: #007bff; color: #fff; border:
+    none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor:
+    pointer; transition: background-color 0.3s ease; }
+    button[type="submit"]:hover { background-color: #0056b3; } /* Định dạng nút
+    "View Details" */ /* Định dạng container cho các nút */ .button-container {
+    display: flex; justify-content: space-between; align-items: center; } /*
+    Định dạng nút "View Details" */ .view-button, .edit-button, .delete-button {
+    background-color: #007bff; color: #fff; border: none; padding: 5px 10px;
+    border-radius: 5px; font-size: 14px; text-decoration: none; cursor: pointer;
+    transition: background-color 0.3s ease; } .view-button:hover,
+    .edit-button:hover, .delete-button:hover { background-color: #0056b3; }
+
+  </style>
+  <body>
+    <div class="container">
+      <div class="layout">
+        <h1>Welcome to our Blog</h1>
+
+        <!-- Biểu mẫu tạo bài post -->
+        <form method="POST" action="/editPost/{{detailPost.id}}">
+          <label for="author">Author:</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            required
+            value="{{detailPost.author}}"
+          /><br />
+
+          <label for="content">Content:</label>
+          <textarea
+            id="content"
+            name="content"
+            required
+          >{{detailPost.content}}</textarea><br />
+
+          <button type="submit">Save Change</button>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

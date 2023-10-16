@@ -1,0 +1,58 @@
+<!-- views/posts/getDetailPost.hbs -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Post</title>
+    <style>
+      body { font-family: Arial, sans-serif; background-color: #f8f8f8; } .post
+      { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0
+      4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px; } .post h2 { font-size:
+      24px; margin-bottom: 10px; } .post p { color: #333; line-height: 1.6; }
+      .comments { background-color: #fff; padding: 20px; border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); } .comment { margin-bottom:
+      10px; } .comment p { margin: 0; } .comment p:first-child { font-weight:
+      bold; } /* Nút Back */ .back-button { display: inline-block; padding: 10px
+      20px; background-color: #007bff; color: #fff; text-decoration: none;
+      font-weight: bold; border-radius: 8px; transition: background-color 0.3s;
+      } .back-button:hover { background-color: #0056b3; } /* Add this CSS to
+      your existing styles */ /* Comment Section */ .comments {
+      background-color: #f8f8f8; padding: 20px; border-radius: 8px; box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px; /* Add margin from top */
+      } .comment { background-color: #fff; padding: 10px; border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 10px; } .comment
+      p { color: #333; line-height: 1.6; margin: 0; } .comment p:first-child {
+      font-weight: bold; } /* CSS cho Form thêm comment */ form {
+      background-color: #f8f8f8; padding: 20px; border-radius: 8px; box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px; } label { display: block;
+      margin-bottom: 10px; } textarea { width: 100%; padding: 10px; border: 1px
+      solid #ccc; border-radius: 4px; resize: vertical; /* Cho phép điều chỉnh
+      chiều cao theo chiều dọc */ } button { background-color: #007bff; color:
+      #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor:
+      pointer; transition: background-color 0.3s; margin-top: 5px; }
+      button:hover { background-color: #0056b3; }
+    </style>
+  </head>
+  <body>
+    <div class="post">
+      <p>Author: {{detailPost.author}}</p>
+      <p>{{detailPost.content}}</p>
+    </div>
+    <form method="POST" action="/addcomment/{{detailPost.id}}">
+      <label for="newComment">Add a Comment:</label>
+      <textarea id="newComment" name="content" required></textarea>
+      <button type="submit">Add Comment</button>
+    </form>
+    <div class="comments">
+      <h3>Comments: {{detailPost.listcomment.length}}</h3>
+      {{#each detailPost.listcomment}}
+        <div class="comment">
+          <p>{{this.content}}</p>
+        </div>
+      {{/each}}
+    </div>
+    <form method=""></form>
+    <a href="/">goback</a>
+  </body>
+</html>
