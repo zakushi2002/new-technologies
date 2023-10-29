@@ -40,7 +40,11 @@ const loadPlanetsData = () => {
   });
 };
 
+const findAll = () => {
+  return habitablePlanets;
+};
+
 module.exports = {
   loadPlanetsData,
-  planets: habitablePlanets,
+  findAll,
 };

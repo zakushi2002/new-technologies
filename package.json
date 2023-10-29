@@ -1,0 +1,29 @@
+{
+  "name": "nasaproject20110420",
+  "version": "1.0.0",
+  "description": "NASA Project 20110420",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run dev --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "test": "npm run test --prefix server && npm run test --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakushi2002/new-technologies.git#Nasa_20110420"
+  },
+  "keywords": [
+    "nasaproject"
+  ],
+  "author": "20110420@student.hcmute.edu.vn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakushi2002/new-technologies/issues"
+  },
+  "homepage": "https://github.com/zakushi2002/new-technologies/tree/Nasa_20110420#readme"
+}
