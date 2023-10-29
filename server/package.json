@@ -1,0 +1,33 @@
+{
+  "name": "nasa-project-api-20110420",
+  "version": "1.0.0",
+  "description": "NASA Mission Control API",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakushi2002/new-technologies.git#Nasa_20110420"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "20110420@student.hcmute.edu.vn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakushi2002/new-technologies/issues"
+  },
+  "homepage": "https://github.com/zakushi2002/new-technologies/tree/Nasa_20110420#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
