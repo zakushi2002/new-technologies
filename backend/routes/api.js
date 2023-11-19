@@ -1,10 +1,14 @@
-const express = require("express");
-const router = express.Router();
-const { save } = require("../controllers/accountController");
+const accountRouter = require("../routes/accountRouter");
+const majorRouter = require("../routes/majorRouter");
+const lecturerRouter = require("../routes/lecturerRouter");
+const topicRouter = require("../routes/topicRouter");
 
 const initAPIRoutes = (app) => {
-  router.post("/account/create", save);
-  return app.use("/v1/", router);
+  app.use("/v1/account", accountRouter);
+  app.use("/v1/major", majorRouter);
+  app.use("/v1/lecturer", lecturerRouter);
+  app.use("/v1/topic", topicRouter);
+  return;
 };
 
 module.exports = initAPIRoutes;

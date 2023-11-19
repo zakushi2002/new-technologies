@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const app = express(); // app express
+const helmet = require("helmet");
+const cors = require("cors");
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME || `localhost` || `127.0.0.1`;
 const configViewEngine = require("./config/viewEngine");
@@ -9,15 +11,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 // Connect to DB
-const dbURL =
-  `mongodb://` +
-  process.env.DB_USER +
-  `:` +
-  process.env.DB_PASSWORD +
-  `@` +
-  process.env.DB_HOST +
-  `:` +
-  process.env.DB_PORT;
+const dbURL = process.env.DB_URL;
 const database = async () => {
   try {
     await mongoose.connect(dbURL, {
@@ -37,7 +31,14 @@ db.once("open", () => {
   // we're connected!
   console.log(`Connected to DB!`);
 });
-
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: "GET,PUT,POST,DELETE",
+    optionsSuccessStatus: 200,
+  })
+);
+app.use(helmet());
 // config view engine
 configViewEngine(app);
 

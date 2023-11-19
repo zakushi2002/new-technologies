@@ -1,6 +1,9 @@
 class ApiMessageDto {
-  constructor() {
-    this.result = true;
+  constructor(result, message, code, data) {
+    this.result = result;
+    this.message = message;
+    this.code = code;
+    this.data = data;
   }
 
   setCode(code) {

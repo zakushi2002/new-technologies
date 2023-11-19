@@ -1,13 +1,7 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
-const root = process.env.AWS_S3_ENDPOINT + process.env.AWS_S3_BUCKET_NAME + "/";
 
 const accountSchema = new mongoose.Schema(
   {
-    id: {
-      type: BigInt,
-      required: true,
-    },
     fullName: {
       type: String,
       trim: true,
@@ -27,8 +21,8 @@ const accountSchema = new mongoose.Schema(
     avatar: {
       type: String,
       trim: true,
-      get: (avatarPath) => `${root}${avatarPath}`,
     },
+    birthdate: Date,
     kind: {
       type: Number,
     },
