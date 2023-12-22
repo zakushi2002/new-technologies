@@ -11,3 +11,5 @@
 #### Tên học phần: New technologies in software engineering
 
 #### GitHub: https://github.com/zakushi2002
+
+#### Video giải thích: https://www.youtube.com/watch?v=YkG3VN3Fck8
